@@ -4,6 +4,8 @@ using namespace std;
 
 int main()
 {
-    cout << "Hola tomas" << endl;
+    setlocale(LC_ALL, "spanish");
+
+    cout << "Buenasss" << endl;
     return 0;
 }
