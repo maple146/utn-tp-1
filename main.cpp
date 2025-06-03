@@ -7,43 +7,14 @@ int main()
 {
     setlocale(LC_ALL, "spanish");
     int option;
+    string Player1,Player2;
 
-    do
-    {
-        cout << "======" << endl;
-        cout << "Enfrentados - Menu" << endl;
-
-        cout << "1 - Jugar" << endl;
-        cout << "2 - Estadisticas" << endl;
-        cout << "3 - Creditos" << endl;
-        cout << "0 - Salir" << endl;
-
-
-        cout << "Seleccione una opcion: ";
-        // TODO: Agregar condicion de if
-        cin >> option;
-
-        switch (option)
-        {
-        case 1:
-            jugar();
-            break;
-        case 2:
-            mostrarEstadisticas();
-            break;
-        case 3:
-            mostrarCreditos();
-            break;
-        case 0:
-            cout << "Desea salir del juego?" << endl;
-        // TODO: Agregar confirmacion
-        default:
-            break;
-
-        }
-
-    }
-    while (option != 0);
+    menu();
+    // ACA EMPEZARIA EL JUEGO
+    system("cls");
+    seleccionarNombres(Player1,Player2);
+        /*cout << Player1 << endl;
+        cout << Player2 << endl;*/
 
     return 0;
 
