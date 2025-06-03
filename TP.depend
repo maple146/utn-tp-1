@@ -1,4 +1,11 @@
 # depslib dependency file v1.0
-1584205420 source:c:\dev\utn\tp\main.cpp
+1748910206 source:c:\dev\utn\tp\main.cpp
 	<iostream>
+	"funciones.h"
+
+1748910094 source:c:\dev\utn\tp\funciones.cpp
+	<iostream>
+	"funciones.h"
+
+1748910004 c:\dev\utn\tp\funciones.h
 
