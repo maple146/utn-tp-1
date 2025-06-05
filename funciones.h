@@ -6,8 +6,9 @@ void menu();
 void jugar();
 void mostrarEstadisticas();
 void mostrarCreditos();
-void seleccionarNombres(string &Player1,string &Player2);
+void seleccionarNombres(string &jugador1,string &jugador2);
 int tirarDado(int caras);
-void interfazJuego(string Player1, string Player2, int numeroDeRonda, int dadoJugador1, int dadoJugador2, int puntajeJugador1, int puntajeJugador2 );
+void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dadosJugador1, int dadosJugador2, int puntajeJugador1, int puntajeJugador2,bool turno);
+bool quienEmpieza(bool turno);
 
 #endif // FUNCIONES_H_INCLUDED

@@ -10,13 +10,14 @@
 
 1749084560 c:\dev\utn\tp\funciones.h
 
-1748922072 source:c:\users\tomas\desktop\cursada\tp\utn-tp-1\main.cpp
+1749139158 source:c:\users\tomas\desktop\cursada\tp\utn-tp-1\main.cpp
 	<iostream>
 	"funciones.h"
+	<ctime>
 
-1748921947 c:\users\tomas\desktop\cursada\tp\utn-tp-1\funciones.h
+1749139027 c:\users\tomas\desktop\cursada\tp\utn-tp-1\funciones.h
 
-1748921962 source:c:\users\tomas\desktop\cursada\tp\utn-tp-1\funciones.cpp
+1749139235 source:c:\users\tomas\desktop\cursada\tp\utn-tp-1\funciones.cpp
 	<iostream>
 	"funciones.h"
 
