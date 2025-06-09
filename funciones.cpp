@@ -120,14 +120,14 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     {
         dadosObjetivo[x] = tirarDado(12);
         resultadoObjetivo+= dadosObjetivo[x];
-        cout << "DEBUG- Dado objetivo: " << x+1 << ": " << dadosObjetivo[x] << endl;
+        // cout << "DEBUG- Dado objetivo: " << x+1 << ": " << dadosObjetivo[x] << endl;
     }
 
     cout << "============================================================" << endl;
     cout << "                       Enfrendados 123" << endl;
     cout << "============================================================" << endl << endl;
 
-    cout << "DEBUG- Estado de turno: " << turno << endl;
+    // cout << "DEBUG- Estado de turno: " << turno << endl;
     cout << "Turno de: ";
     if (turno == true)
     {
@@ -139,7 +139,7 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     }
     cout << "Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
     cout << "Stock actual: ";
-    cout << "DEBUG- Estado de puntajeJugador1: " << puntajeJugador1 << endl;
+    // cout << "DEBUG- Estado de puntajeJugador1: " << puntajeJugador1 << endl;
     // cout << "DEBUG- Estado de sumaStock: " << sumaStock << endl;
     if (turno==true)
     {
@@ -203,7 +203,7 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
             sumaStock += dadosStockElegidos[contadorStock];
             contadorStock++;
 
-            cout << "Exiting while..." << endl;
+            // cout << "Exiting while..." << endl;
         }
 
         // Suma los dados elegidos y los imprime
@@ -217,53 +217,24 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
             }
         }
 
-        // Chequea si la suma de dados elegidos es mayor o igual al objetivo
-        if (resultadoObjetivo < sumaStock)
+        // Checkea si la suma de dados elegidos es mayor o igual al objetivo
+        if (sumaStock == resultadoObjetivo)
         {
-            cout << " = " << sumaStock << endl;
-            cout << "El numero sumado es mayor al objetivo" << endl;
-            sumaStock=0;
-
-            // cout << "DEBUG- Puntos del jugador1: " + puntajeJugador1 << endl;
-            // cout << "DEBUG- Puntos del jugador2: " + puntajeJugador2 << endl;
+            tiradaExitosa(turno, resultadoObjetivo, contadorStock,
+                          puntajeJugador1, puntajeJugador2,
+                          dadosJugador1, dadosJugador2,
+                          jugador1, jugador2);
         }
-        else
+        else if (sumaStock > resultadoObjetivo)
         {
-            cout << " = " << sumaStock;
-            // cout << "DEBUG- Puntos del jugador1: " + puntajeJugador1 << endl;
-            // cout << "DEBUG- Puntos del jugador2: " + puntajeJugador2 << endl;
+            tiradaNoExitosa(turno, dadosJugador1, dadosJugador2, jugador1, jugador2);
+        } else {
+            // TODO: Checkear si deberia hacer algo mas aca, ademas de lo que esta hecho en if(sumaStock<resultadoObjetivo)
         }
 
-        cout << "DEBUG- Puntos del sumaStock: " << sumaStock << endl;
-        cout << "DEBUG- Puntos del contadorStock: " << contadorStock << endl;
+        // cout << "DEBUG- Puntos del sumaStock: " << sumaStock << endl;
+        // cout << "DEBUG- Puntos del contadorStock: " << contadorStock << endl;
         // cout << "DEBUG- Puntos del resultadoObjetivo: " << resultadoObjetivo << endl;
-
-
-
-
-        // Logica de puntos y transferencia de dados
-        int puntosGanados = contadorStock * resultadoObjetivo;
-        cout << endl << "Puntos ganados: " << contadorStock << " x " << resultadoObjetivo << " = " << puntosGanados << endl;
-
-        if (turno == true)
-        {
-            puntajeJugador1 += puntosGanados;
-            cout << "Transfiere " << contadorStock << " dados a " << jugador2 << endl;
-            cout << jugador1 << " " << dadosJugador1 - contadorStock << " dados restantes, " << puntajeJugador1 << " pts" << endl;
-            cout << jugador2 << " " << dadosJugador2 + contadorStock << " dados (recibio " << contadorStock << ")" << endl;
-        }
-        else
-        {
-            puntajeJugador2 += puntosGanados;
-            cout << "Transfiere " << contadorStock << " dados a " << jugador1 << endl;
-            cout << jugador2 << " " << dadosJugador2 - contadorStock << " dados restantes, " << puntajeJugador2 << " pts" << endl;
-            cout << jugador1 << " " << dadosJugador1 + contadorStock << " dados (recibio " << contadorStock << ")" << endl;
-        }
-
-        // cout << endl << "Puntos: 12 x 3 = 36" << endl;
-        // cout << "Transfiere 3 dados a Maria" << endl;
-        // cout << jugador1 << "3 dados restantes, 36 pts" << endl;
-        // cout << jugador2 << "9 dados (recibio 3)" << endl;
     }
 }
 
@@ -292,5 +263,58 @@ bool quienEmpieza(bool turno)
     {
         cout << "Jugador 2 empieza" << endl;
         return false;
+    }
+}
+
+void tiradaExitosa(bool turno, int resultadoObjetivo, int dadosUsados, int puntajeJugador1, int puntajeJugador2, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2)
+{
+    int puntosGanados = resultadoObjetivo * dadosUsados;
+    cout << endl << "Puntos ganados: " << dadosUsados << " x " << resultadoObjetivo << " = " << puntosGanados << endl;
+
+
+    if (turno == true)
+    {
+        puntajeJugador1 += puntosGanados;
+        cout << "Transfiere " << dadosUsados << " dados a " << jugador2 << endl;
+        cout << jugador1 << " " << dadosJugador1 - dadosUsados << " dados restantes, " << puntajeJugador1 << " pts" << endl;
+        cout << jugador2 << " " << dadosJugador2 + dadosUsados << " dados (recibio " << dadosUsados << ")" << endl;
+    }
+    else
+    {
+        puntajeJugador2 += puntosGanados;
+        cout << "Transfiere " << dadosUsados << " dados a " << jugador1 << endl;
+        cout << jugador2 << " " << dadosJugador2 - dadosUsados << " dados restantes, " << puntajeJugador2 << " pts" << endl;
+        cout << jugador1 << " " << dadosJugador1 + dadosUsados << " dados (recibio " << dadosUsados << ")" << endl;
+    }
+}
+
+void tiradaNoExitosa(bool turno, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2)
+{
+    // TODO: Cambiar tipo de la variable turno?
+    if (turno && dadosJugador2 > 1)
+    {
+        dadosJugador1++;
+        dadosJugador2--;
+        // TODO: Checkear porque no corta la linea antes
+        cout << " " << endl ;
+        cout << jugador1 << " no tuvo buena tirada, recibe un dado de " << jugador2 << endl;
+
+        cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
+        cout << "Dados de " << jugador2 << ": " << dadosJugador2 << endl;
+    }
+    else if (!turno && dadosJugador1 > 1)
+    {
+        dadosJugador2++;
+        dadosJugador1--;
+        // TODO: Checkear porque no corta la linea antes
+        cout << " " << endl ;
+        cout << jugador2 << " no tuvo buena tirada, recibe un dado de " << jugador1 << endl;
+
+        cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
+        cout << "Dados de " << jugador2 << ": " << dadosJugador2 << endl;
+    }
+    else
+    {
+        // TODO: Revisar que deberia pasar aca..
     }
 }
