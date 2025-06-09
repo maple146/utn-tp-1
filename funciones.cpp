@@ -120,23 +120,27 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     {
         dadosObjetivo[x] = tirarDado(12);
         resultadoObjetivo+= dadosObjetivo[x];
+        cout << "DEBUG- Dado objetivo: " << x+1 << ": " << dadosObjetivo[x] << endl;
     }
 
     cout << "============================================================" << endl;
     cout << "                       Enfrendados 123" << endl;
     cout << "============================================================" << endl << endl;
 
-    cout << "Turno de:";
+    cout << "DEBUG- Estado de turno: " << turno << endl;
+    cout << "Turno de: ";
     if (turno == true)
     {
-        cout << jugador1;
+        cout << jugador1 << endl;
     }
     else
     {
-        cout << jugador2;
+        cout << jugador2 << endl;
     }
-    cout << "                                               Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
+    cout << "Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
     cout << "Stock actual: ";
+    cout << "DEBUG- Estado de puntajeJugador1: " << puntajeJugador1 << endl;
+    // cout << "DEBUG- Estado de sumaStock: " << sumaStock << endl;
     if (turno==true)
     {
         cout << dadosJugador1 << ": [";
@@ -150,7 +154,7 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
                 cout << ",";
             }
         }
-
+        // cout << "DEBUG- Estado sumaStock despues de loop de: " << sumaStock << endl;
     }
     else
     {
@@ -178,42 +182,88 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
         cout << "Seleccionar dados: ";
         while(resultadoObjetivo > sumaStock)
         {
-
+            // cout << "DEBUG- Estado de resultadoObjetivo: " << resultadoObjetivo << endl;
+            // cout << "DEBUG- Estado de sumaStock: " << sumaStock << endl;
             cin >> seleccion;
+            // cout << "DEBUG- Estado de seleccion: " << seleccion << endl;
+
             while (dadosStock[seleccion-1]==0)
             {
                 cout << "Dado incorrecto, por favor seleccionar otro: ";
                 cin >> seleccion;
             }
+            // cout << "DEBUG- Estado de dadosStockElegidos[contadorStock]: " << dadosStockElegidos[contadorStock] << endl;
             dadosStockElegidos[contadorStock] = dadosStock[seleccion-1];
+            // cout << "DEBUG- Estado de dadosStockElegidos[contadorStock]: " << dadosStockElegidos[contadorStock] << endl;
+
+            // cout << "DEBUG- Estado de dadosStock[seleccion-1]: " << dadosStockElegidos[contadorStock] << endl;
             dadosStock[seleccion-1] = 0;
+            // cout << "DEBUG- Estado de dadosStock[seleccion-1]: " << dadosStockElegidos[contadorStock] << endl;
+
             sumaStock += dadosStockElegidos[contadorStock];
             contadorStock++;
+
+            cout << "Exiting while..." << endl;
         }
 
+        // Suma los dados elegidos y los imprime
         for (x=0; x<contadorStock; x++)
         {
+            // cout << "Inside for..." << endl;
             cout << dadosStockElegidos[x];
-            if (x< contadorStock-1)
+            if (x < contadorStock-1)
             {
                 cout << " + ";
             }
         }
+
+        // Chequea si la suma de dados elegidos es mayor o igual al objetivo
         if (resultadoObjetivo < sumaStock)
         {
             cout << " = " << sumaStock << endl;
-            cout << "El numero sumado es mayor al objetivo";
+            cout << "El numero sumado es mayor al objetivo" << endl;
             sumaStock=0;
+
+            // cout << "DEBUG- Puntos del jugador1: " + puntajeJugador1 << endl;
+            // cout << "DEBUG- Puntos del jugador2: " + puntajeJugador2 << endl;
         }
         else
         {
             cout << " = " << sumaStock;
+            // cout << "DEBUG- Puntos del jugador1: " + puntajeJugador1 << endl;
+            // cout << "DEBUG- Puntos del jugador2: " + puntajeJugador2 << endl;
         }
 
-        cout << endl << "Puntos: 12 x 3 = 36" << endl;
-        cout << "Transfiere 3 dados a Maria" << endl;
-        cout << jugador1 << "3 dados restantes, 36 pts" << endl;
-        cout << jugador2 << "9 dados (recibio 3)" << endl;
+        cout << "DEBUG- Puntos del sumaStock: " << sumaStock << endl;
+        cout << "DEBUG- Puntos del contadorStock: " << contadorStock << endl;
+        // cout << "DEBUG- Puntos del resultadoObjetivo: " << resultadoObjetivo << endl;
+
+
+
+
+        // Logica de puntos y transferencia de dados
+        int puntosGanados = contadorStock * resultadoObjetivo;
+        cout << endl << "Puntos ganados: " << contadorStock << " x " << resultadoObjetivo << " = " << puntosGanados << endl;
+
+        if (turno == true)
+        {
+            puntajeJugador1 += puntosGanados;
+            cout << "Transfiere " << contadorStock << " dados a " << jugador2 << endl;
+            cout << jugador1 << " " << dadosJugador1 - contadorStock << " dados restantes, " << puntajeJugador1 << " pts" << endl;
+            cout << jugador2 << " " << dadosJugador2 + contadorStock << " dados (recibio " << contadorStock << ")" << endl;
+        }
+        else
+        {
+            puntajeJugador2 += puntosGanados;
+            cout << "Transfiere " << contadorStock << " dados a " << jugador1 << endl;
+            cout << jugador2 << " " << dadosJugador2 - contadorStock << " dados restantes, " << puntajeJugador2 << " pts" << endl;
+            cout << jugador1 << " " << dadosJugador1 + contadorStock << " dados (recibio " << contadorStock << ")" << endl;
+        }
+
+        // cout << endl << "Puntos: 12 x 3 = 36" << endl;
+        // cout << "Transfiere 3 dados a Maria" << endl;
+        // cout << jugador1 << "3 dados restantes, 36 pts" << endl;
+        // cout << jugador2 << "9 dados (recibio 3)" << endl;
     }
 }
 
@@ -235,13 +285,12 @@ bool quienEmpieza(bool turno)
     //system("pause");
     if (j1 > j2)
     {
+        cout << "Jugador 1 empieza" << endl;
         return true;
     }
     else
     {
+        cout << "Jugador 2 empieza" << endl;
         return false;
     }
-
-
-
 }
