@@ -260,6 +260,11 @@ void tiradaExitosa(bool turno, int resultadoObjetivo, int dadosUsados, int punta
         cout << "Transfiere " << dadosUsados << " dados a " << jugador2 << endl;
         cout << jugador1 << " " << dadosJugador1 - dadosUsados << " dados restantes, " << puntajeJugador1 << " pts" << endl;
         cout << jugador2 << " " << dadosJugador2 + dadosUsados << " dados (recibio " << dadosUsados << ")" << endl;
+
+        if (dadosJugador1 == 0) {
+            cout << jugador1 << " se quedo sin dados, gana un bonus de 10000 puntos" << endl;
+            // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
+        }
     }
     else
     {
@@ -267,6 +272,11 @@ void tiradaExitosa(bool turno, int resultadoObjetivo, int dadosUsados, int punta
         cout << "Transfiere " << dadosUsados << " dados a " << jugador1 << endl;
         cout << jugador2 << " " << dadosJugador2 - dadosUsados << " dados restantes, " << puntajeJugador2 << " pts" << endl;
         cout << jugador1 << " " << dadosJugador1 + dadosUsados << " dados (recibio " << dadosUsados << ")" << endl;
+
+        if (dadosJugador2 == 0) {
+            cout << jugador2 << " se quedo sin dados, gana un bonus de 10000 puntos" << endl;
+            // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
+        }
     }
 }
 
