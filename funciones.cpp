@@ -120,14 +120,12 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     {
         dadosObjetivo[x] = tirarDado(12);
         resultadoObjetivo+= dadosObjetivo[x];
-        // cout << "DEBUG- Dado objetivo: " << x+1 << ": " << dadosObjetivo[x] << endl;
     }
 
     cout << "============================================================" << endl;
     cout << "                       Enfrendados 123" << endl;
     cout << "============================================================" << endl << endl;
 
-    // cout << "DEBUG- Estado de turno: " << turno << endl;
     cout << "Turno de: ";
     if (turno == true)
     {
@@ -139,9 +137,9 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     }
     cout << "Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
     cout << "Stock actual: ";
-    // cout << "DEBUG- Estado de puntajeJugador1: " << puntajeJugador1 << endl;
-    // cout << "DEBUG- Estado de sumaStock: " << sumaStock << endl;
+
     if (turno==true)
+
     {
         cout << dadosJugador1 << ": [";
         for (x=0; x<dadosJugador1; x++)
@@ -154,7 +152,6 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
                 cout << ",";
             }
         }
-        // cout << "DEBUG- Estado sumaStock despues de loop de: " << sumaStock << endl;
     }
     else
     {
@@ -182,34 +179,23 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
         cout << "Seleccionar dados: ";
         while(resultadoObjetivo > sumaStock)
         {
-            // cout << "DEBUG- Estado de resultadoObjetivo: " << resultadoObjetivo << endl;
-            // cout << "DEBUG- Estado de sumaStock: " << sumaStock << endl;
             cin >> seleccion;
-            // cout << "DEBUG- Estado de seleccion: " << seleccion << endl;
 
             while (dadosStock[seleccion-1]==0)
             {
                 cout << "Dado incorrecto, por favor seleccionar otro: ";
                 cin >> seleccion;
             }
-            // cout << "DEBUG- Estado de dadosStockElegidos[contadorStock]: " << dadosStockElegidos[contadorStock] << endl;
             dadosStockElegidos[contadorStock] = dadosStock[seleccion-1];
-            // cout << "DEBUG- Estado de dadosStockElegidos[contadorStock]: " << dadosStockElegidos[contadorStock] << endl;
-
-            // cout << "DEBUG- Estado de dadosStock[seleccion-1]: " << dadosStockElegidos[contadorStock] << endl;
             dadosStock[seleccion-1] = 0;
-            // cout << "DEBUG- Estado de dadosStock[seleccion-1]: " << dadosStockElegidos[contadorStock] << endl;
 
             sumaStock += dadosStockElegidos[contadorStock];
             contadorStock++;
-
-            // cout << "Exiting while..." << endl;
         }
 
         // Suma los dados elegidos y los imprime
         for (x=0; x<contadorStock; x++)
         {
-            // cout << "Inside for..." << endl;
             cout << dadosStockElegidos[x];
             if (x < contadorStock-1)
             {
@@ -231,10 +217,6 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
         } else {
             // TODO: Checkear si deberia hacer algo mas aca, ademas de lo que esta hecho en if(sumaStock<resultadoObjetivo)
         }
-
-        // cout << "DEBUG- Puntos del sumaStock: " << sumaStock << endl;
-        // cout << "DEBUG- Puntos del contadorStock: " << contadorStock << endl;
-        // cout << "DEBUG- Puntos del resultadoObjetivo: " << resultadoObjetivo << endl;
     }
 }
 
