@@ -93,6 +93,7 @@ void mostrarCreditos()
 
 void seleccionarNombres(string &jugador1, string &jugador2)
 {
+    system("cls");
 
     cout << "============================================================" << endl;
     cout << "                       Enfrendados" << endl;
@@ -111,7 +112,7 @@ void seleccionarNombres(string &jugador1, string &jugador2)
     getline(cin, jugador2);
 }
 
-void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dadosJugador1, int dadosJugador2, int puntajeJugador1, int puntajeJugador2,bool turno)
+void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDeRonda, int dadosJugador1, int dadosJugador2, int puntajeJugador1, int puntajeJugador2,bool turno)
 {
     system("cls");
     int contadorStock=0,seleccion,sumaStock=0,x,dadosObjetivo[2],dadosStockElegidos[12],dadosStock[12],resultadoObjetivo=0;
@@ -126,18 +127,19 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     cout << "                       Enfrendados " << endl;
     cout << "============================================================" << endl << endl;
 
+    cout << "RONDA: " << numeroDeRonda << endl << endl;
     cout << "Turno de: ";
     if (turno == true)
     {
-        cout << jugador1 << endl;
+        cout << jugador1;
     }
     else
     {
-        cout << jugador2 << endl;
+        cout << jugador2;
     }
-    cout << "Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
+    cout << "                                    Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
+    cout << endl;
     cout << "Stock actual: ";
-
     if (turno==true)
 
     {
@@ -155,7 +157,7 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     }
     else
     {
-        cout << dadosJugador2 << ": [ ";
+        cout << dadosJugador2 << ": [";
         for (x=0; x<dadosJugador2; x++)
         {
             dadosStock[x] = tirarDado(6);
@@ -163,7 +165,7 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
             cout << dadosStock[x];
             if (x < dadosJugador2-1)
             {
-                cout << " , ";
+                cout << ",";
             }
         }
     }
@@ -206,12 +208,13 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
         // Checkea si la suma de dados elegidos es mayor o igual al objetivo
         if (sumaStock == resultadoObjetivo)
         {
-            tiradaExitosa(turno, sumaStock, contadorStock,
+            tiradaExitosa(sinDados,turno, sumaStock, contadorStock,
                           puntajeJugador1, puntajeJugador2,
                           dadosJugador1, dadosJugador2,
                           jugador1, jugador2);
         }
-        else {
+        else
+        {
             tiradaNoExitosa(sumaStock, turno, dadosJugador1, dadosJugador2, jugador1, jugador2);
         }
     }
@@ -245,7 +248,7 @@ bool quienEmpieza(bool turno)
     }
 }
 
-void tiradaExitosa(bool turno, int sumaStock, int dadosUsados, int puntajeJugador1, int puntajeJugador2, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2)
+void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, int puntajeJugador1, int puntajeJugador2, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2)
 {
     int puntosGanados = sumaStock * dadosUsados;
     cout << endl << "Puntos ganados: " << dadosUsados << " x " << sumaStock << " = " << puntosGanados << endl;
@@ -260,6 +263,7 @@ void tiradaExitosa(bool turno, int sumaStock, int dadosUsados, int puntajeJugado
 
         if (dadosJugador1 == 0)
         {
+            sinDados=!sinDados;
             cout << jugador1 << " se quedo sin dados, gana un bonus de 10000 puntos" << endl;
             // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
         }
@@ -273,6 +277,7 @@ void tiradaExitosa(bool turno, int sumaStock, int dadosUsados, int puntajeJugado
 
         if (dadosJugador2 == 0)
         {
+            sinDados=!sinDados;
             cout << jugador2 << " se quedo sin dados, gana un bonus de 10000 puntos" << endl;
             // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
         }
@@ -282,12 +287,13 @@ void tiradaExitosa(bool turno, int sumaStock, int dadosUsados, int puntajeJugado
 void tiradaNoExitosa(int sumaStock, bool turno, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2)
 {
     // TODO: Cambiar tipo de la variable turno?
+    cout << " = " << sumaStock << endl;
     if (turno && dadosJugador2 > 1)
     {
         dadosJugador1++;
         dadosJugador2--;
         // TODO: Checkear porque no corta la linea antes
-        cout << " = " << sumaStock << endl;
+
         cout << jugador1 << " no tuvo buena tirada, recibe un dado de " << jugador2 << endl;
 
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
@@ -298,7 +304,6 @@ void tiradaNoExitosa(int sumaStock, bool turno, int dadosJugador1, int dadosJuga
         dadosJugador2++;
         dadosJugador1--;
         // TODO: Checkear porque no corta la linea antes
-        cout << " " << endl ;
         cout << jugador2 << " no tuvo buena tirada, recibe un dado de " << jugador1 << endl;
 
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
