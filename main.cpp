@@ -7,21 +7,34 @@ int main()
 {
     srand(time(NULL));
     setlocale(LC_ALL, "spanish");
-    int option;
+    int option,numeroDeRonda = 1, dadosJugador1=6, dadosJugador2=6, puntajeJugador1 = 0, puntajeJugador2 = 0,contadorRonda=0;
     string jugador1="Jugador 1",jugador2="Jugador 2";
-    bool turno=true;
-
-    // Temporal, pruebas
-    int numeroDeRonda = 1, dadosJugador1 = 6, dadosJugador2= 6, puntajeJugador1 = 0, puntajeJugador2 = 0;
+    bool turno=true,sinDados=false;
 
     menu();
-    // ACA EMPEZARIA EL JUEGO
-    system("cls");
-
-    //seleccionarNombres(jugador1,jugador2);
+    // seleccionarNombres(jugador1,jugador2);
     turno = quienEmpieza(turno);
 
-    interfazJuego(jugador1, jugador2, numeroDeRonda, dadosJugador1, dadosJugador2, puntajeJugador1, puntajeJugador2,turno);
+    while (numeroDeRonda < 4)
+    {
+        // ACA EMPEZARIA EL JUEGO
+        system("cls");
+
+        interfazJuego(sinDados,jugador1, jugador2, numeroDeRonda, dadosJugador1, dadosJugador2, puntajeJugador1, puntajeJugador2,turno);
+        contadorRonda++;
+        if (contadorRonda %2 == 0)
+        {
+            numeroDeRonda++;
+        }
+        turno=!turno;
+        if (sinDados == true)
+        {
+            break;
+        }
+        system("pause");
+
+    }
+
     return 0;
 
 }
