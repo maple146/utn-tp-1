@@ -8,9 +8,9 @@ void mostrarEstadisticas();
 void mostrarCreditos();
 void seleccionarNombres(string &jugador1,string &jugador2);
 int tirarDado(int caras);
-void interfazJuego(bool sinDados,string jugador1, string jugador2, int numeroDeRonda, int dadosJugador1, int dadosJugador2, int puntajeJugador1, int puntajeJugador2,bool turno);
+void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDeRonda, int dadosJugador1, int dadosJugador2, int puntajeJugador1, int puntajeJugador2,bool turno);
 bool quienEmpieza(bool turno);
-void tiradaExitosa(bool sinDados,bool turno, int sumaStock, int dadosUsados, int puntajeJugador1, int puntajeJugador2, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2);
+void tiradaExitosa(bool &sinDados,bool turno, int sumaStock, int dadosUsados, int puntajeJugador1, int puntajeJugador2, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2);
 void tiradaNoExitosa(int sumaStock, bool turno, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2);
 
 #endif // FUNCIONES_H_INCLUDED

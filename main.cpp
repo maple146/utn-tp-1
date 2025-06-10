@@ -27,6 +27,7 @@ int main()
             numeroDeRonda++;
         }
         turno=!turno;
+        cout << sinDados;
         if (sinDados == true)
         {
             break;
