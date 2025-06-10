@@ -123,7 +123,7 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
     }
 
     cout << "============================================================" << endl;
-    cout << "                       Enfrendados 123" << endl;
+    cout << "                       Enfrendados " << endl;
     cout << "============================================================" << endl << endl;
 
     cout << "Turno de: ";
@@ -212,7 +212,7 @@ void interfazJuego(string jugador1, string jugador2, int numeroDeRonda, int dado
                           jugador1, jugador2);
         }
         else {
-            tiradaNoExitosa(turno, dadosJugador1, dadosJugador2, jugador1, jugador2);
+            tiradaNoExitosa(sumaStock, turno, dadosJugador1, dadosJugador2, jugador1, jugador2);
         }
     }
 }
@@ -279,7 +279,7 @@ void tiradaExitosa(bool turno, int sumaStock, int dadosUsados, int puntajeJugado
     }
 }
 
-void tiradaNoExitosa(bool turno, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2)
+void tiradaNoExitosa(int sumaStock, bool turno, int dadosJugador1, int dadosJugador2, string jugador1, string jugador2)
 {
     // TODO: Cambiar tipo de la variable turno?
     if (turno && dadosJugador2 > 1)
@@ -287,7 +287,7 @@ void tiradaNoExitosa(bool turno, int dadosJugador1, int dadosJugador2, string ju
         dadosJugador1++;
         dadosJugador2--;
         // TODO: Checkear porque no corta la linea antes
-        cout << " " << endl ;
+        cout << " = " << sumaStock << endl;
         cout << jugador1 << " no tuvo buena tirada, recibe un dado de " << jugador2 << endl;
 
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
