@@ -21,6 +21,7 @@ int main()
         system("cls");
 
         interfazJuego(sinDados,jugador1, jugador2, numeroDeRonda, dadosJugador1, dadosJugador2, puntajeJugador1, puntajeJugador2,turno);
+
         contadorRonda++;
         if (contadorRonda %2 == 0)
         {
