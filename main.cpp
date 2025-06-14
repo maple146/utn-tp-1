@@ -7,13 +7,16 @@ int main()
 {
     srand(time(NULL));
     setlocale(LC_ALL, "spanish");
-    int option,numeroDeRonda = 1, dadosJugador1=6, dadosJugador2=6, puntajeJugador1 = 0, puntajeJugador2 = 0,contadorRonda=0;
-    string jugador1="Jugador 1",jugador2="Jugador 2";
-    bool turno=true,sinDados=false;
+    int puntajeGanador,puntajeEstadistica[5]={},option;
+    string jugadorEstadistica[5],jugador1="Jugador 1",jugador2="Jugador 2",ganador;
+    bool turno;
 
     menu();
-    // seleccionarNombres(jugador1,jugador2);
+    //seleccionarNombres(jugador1,jugador2);
     turno = quienEmpieza(turno);
+
+    int numeroDeRonda = 1, dadosJugador1=6, dadosJugador2=6, puntajeJugador1 = 0, puntajeJugador2 = 0,contadorRonda=0;
+    bool sinDados=false;
 
     while (numeroDeRonda < 4)
     {
@@ -33,6 +36,8 @@ int main()
         {
             break;
         }
+        jugadorGanador(turno,jugador1,jugador2,puntajeJugador1,puntajeJugador2,ganador,puntajeGanador);
+        ordenarEstadistica(ganador,puntajeGanador,jugadorEstadistica,puntajeEstadistica);
         system("pause");
 
     }

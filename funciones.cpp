@@ -180,6 +180,7 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
     }
     cout << "]" << endl;
 
+
     if(sumaStock<resultadoObjetivo)
     {
         cout << "No se puede llegar al numero objetivo, turno perdido" << endl;
@@ -203,6 +204,8 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
             sumaStock += dadosStockElegidos[contadorStock];
             contadorStock++;
         }
+             cout << endl;
+        cout << "######Calculo de los resultados######" << endl;
 
         // Suma los dados elegidos y los imprime
         for (x=0; x<contadorStock; x++)
@@ -214,7 +217,7 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
             }
         }
 
-        cout << "######Calculo de los resultados######" << endl;
+
         // Checkea si la suma de dados elegidos es mayor o igual al objetivo
         if (sumaStock == resultadoObjetivo)
         {
@@ -262,7 +265,7 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 {
     int puntosGanados = sumaStock * dadosUsados;
     cout << endl << "Puntos ganados: " << dadosUsados << " x " << sumaStock << " = " << puntosGanados << endl;
-
+    cout << endl;
     // turno true = jugador1, turno false = false
     if (turno == true)
     {
@@ -273,7 +276,7 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 
         cout << jugador1 << " transfiere " << dadosUsados << " dados a " << jugador2 << endl;
 
-        cout << "######Estado actual######" << endl;
+        cout << endl << "######Estado actual######" << endl;
         cout << jugador1 << " " << dadosJugador1 << " dados restantes, " << puntajeJugador1 << " pts" << endl;
         cout << jugador2 << " " << dadosJugador2 << " dados (recibio " << dadosUsados << ")" << endl;
 
@@ -294,7 +297,7 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 
         cout << jugador2 << " transfiere " << dadosUsados << " dados a " << jugador1 << endl;
 
-        cout << "######Estado actual######" << endl;
+        cout << endl << "######Estado actual######" << endl;
         cout << jugador2 << " " << dadosJugador2 << " dados restantes, " << puntajeJugador2 << " pts" << endl;
         cout << jugador1 << " " << dadosJugador1 << " dados (recibio " << dadosUsados << ")" << endl;
 
@@ -312,6 +315,7 @@ void tiradaNoExitosa(int sumaStock, bool turno, int &dadosJugador1, int &dadosJu
 {
     // TODO: Cambiar tipo de la variable turno?
     cout << " = " << sumaStock << endl;
+    cout << endl;
     if (turno && dadosJugador2 > 1)
     {
         dadosJugador1++;
@@ -320,6 +324,7 @@ void tiradaNoExitosa(int sumaStock, bool turno, int &dadosJugador1, int &dadosJu
 
         cout << jugador1 << " no tuvo buena tirada, recibe un dado de " << jugador2 << endl;
 
+        cout << endl << "######Estado actual######" << endl;
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
         cout << "Dados de " << jugador2 << ": " << dadosJugador2 << endl;
     }
@@ -330,6 +335,7 @@ void tiradaNoExitosa(int sumaStock, bool turno, int &dadosJugador1, int &dadosJu
         // TODO: Checkear porque no corta la linea antes
         cout << jugador2 << " no tuvo buena tirada, recibe un dado de " << jugador1 << endl;
 
+        cout << endl << "######Estado actual######" << endl;
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
         cout << "Dados de " << jugador2 << ": " << dadosJugador2 << endl;
     }
@@ -337,4 +343,55 @@ void tiradaNoExitosa(int sumaStock, bool turno, int &dadosJugador1, int &dadosJu
     {
         // TODO: Revisar que deberia pasar aca..
     }
+}
+void jugadorGanador(bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador)
+{
+    if (turno==true)
+    {
+        ganador=jugador1;
+        puntajeGanador=puntajeJugador1;
+    }
+    else
+    {
+        ganador=jugador2;
+        puntajeGanador=puntajeJugador2;
+    }
+
+
+}
+
+void ordenarEstadistica(string ganador,int puntajeGanador,string jugadorEstadistica[],int puntajeEstadistica[])
+{
+    int x,i,aux,posMin;
+    string auxiliar;
+
+    for (x=0; x<5; x++)
+    {
+        if (puntajeEstadistica[x]==0)
+        {
+            jugadorEstadistica[x]=ganador;
+            puntajeEstadistica[x]=puntajeGanador;
+            break;
+        }
+    }
+
+    for (x=0; x<4; x++)
+    {
+        posMin=x;
+        for (i=x+1; i<5; i++)
+        {
+            if (puntajeEstadistica[i]>puntajeEstadistica[posMin])
+            {
+                posMin=i;
+            }
+        }
+        aux=puntajeEstadistica[x];
+        puntajeEstadistica[x]=puntajeEstadistica[posMin];
+        puntajeEstadistica[posMin]=aux;
+
+        auxiliar=jugadorEstadistica[x];
+        jugadorEstadistica[x]=jugadorEstadistica[posMin];
+        jugadorEstadistica[posMin]=auxiliar;
+    }
+
 }
