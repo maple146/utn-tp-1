@@ -4,7 +4,7 @@
 using namespace std;
 
 
-void menu()
+void menu(int puntajeEstadistica[],string jugadorEstadistica[])
 {
     int option;
     char confirm;
@@ -40,7 +40,7 @@ void menu()
         case 1:
             return;
         case 2:
-            mostrarEstadisticas();
+            mostrarEstadisticas(puntajeEstadistica,jugadorEstadistica);
             break;
         case 3:
             mostrarCreditos();
@@ -75,10 +75,16 @@ void jugar()
     system("pause>nul");
 }
 
-void mostrarEstadisticas()
+void mostrarEstadisticas(int puntajeEstadistica[],string jugadorEstadistica[])
 {
     system("cls");
-    cout << "Seleccionado estadisticas" << endl;
+    cout << "============================================================" << endl;
+        cout << "                       Enfrendados" << endl;
+        cout << "============================================================" << endl;
+        cout << "MEJOR PUNTUACION" << endl;
+    for (int x=0;x<5;x++){
+        cout << jugadorEstadistica[x] << " ----- " << puntajeEstadistica[x] << endl;
+    }
     cout << "Presione cualquier tecla para volver al menu..." << endl;
     system("pause>nul");
 }

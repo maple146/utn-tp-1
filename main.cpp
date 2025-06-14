@@ -11,7 +11,8 @@ int main()
     string jugadorEstadistica[5],jugador1="Jugador 1",jugador2="Jugador 2",ganador;
     bool turno;
 
-    menu();
+    while(option!=0){
+    menu(puntajeEstadistica,jugadorEstadistica);
     //seleccionarNombres(jugador1,jugador2);
     turno = quienEmpieza(turno);
 
@@ -41,7 +42,7 @@ int main()
         system("pause");
 
     }
-
+    }
     return 0;
 
 }

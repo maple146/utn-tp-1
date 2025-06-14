@@ -2,9 +2,9 @@
 #define FUNCIONES_H_INCLUDED
 using namespace std;
 
-void menu();
+void menu(int puntajeEstadistica[],string jugadorEstadistica[]);
 void jugar();
-void mostrarEstadisticas();
+void mostrarEstadisticas(int puntajeEstadistica[],string jugadorEstadistica[]);
 void mostrarCreditos();
 void seleccionarNombres(string &jugador1,string &jugador2);
 int tirarDado(int caras);
