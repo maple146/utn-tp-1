@@ -131,11 +131,20 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
     cout << "Turno de: ";
     if (turno == true)
     {
-        cout << jugador1;
+        cout << jugador1 << endl;
     }
     else
     {
-        cout << jugador2;
+        cout << jugador2 << endl;
+    }
+    cout << "Puntos actuales:" ;
+    if (turno == true)
+    {
+        cout << puntajeJugador1 << endl;
+    }
+    else
+    {
+        cout << puntajeJugador2 << endl;
     }
     cout << "                                    Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
     cout << endl;
@@ -205,6 +214,7 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
             }
         }
 
+        cout << "######Calculo de los resultados######" << endl;
         // Checkea si la suma de dados elegidos es mayor o igual al objetivo
         if (sumaStock == resultadoObjetivo)
         {
@@ -261,7 +271,9 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
         dadosJugador1 -= dadosUsados;
         dadosJugador2 += dadosUsados;
 
-        cout << "Transfiere " << dadosUsados << " dados a " << jugador2 << endl;
+        cout << jugador1 << " transfiere " << dadosUsados << " dados a " << jugador2 << endl;
+
+        cout << "######Estado actual######" << endl;
         cout << jugador1 << " " << dadosJugador1 << " dados restantes, " << puntajeJugador1 << " pts" << endl;
         cout << jugador2 << " " << dadosJugador2 << " dados (recibio " << dadosUsados << ")" << endl;
 
@@ -280,7 +292,9 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
         dadosJugador2 -= dadosUsados;
         dadosJugador1 += dadosUsados;
 
-        cout << "Transfiere " << dadosUsados << " dados a " << jugador1 << endl;
+        cout << jugador2 << " transfiere " << dadosUsados << " dados a " << jugador1 << endl;
+
+        cout << "######Estado actual######" << endl;
         cout << jugador2 << " " << dadosJugador2 << " dados restantes, " << puntajeJugador2 << " pts" << endl;
         cout << jugador1 << " " << dadosJugador1 << " dados (recibio " << dadosUsados << ")" << endl;
 
