@@ -21,6 +21,11 @@ int main()
         system("cls");
 
         interfazJuego(sinDados,jugador1, jugador2, numeroDeRonda, dadosJugador1, dadosJugador2, puntajeJugador1, puntajeJugador2,turno);
+
+        cout << "DEBUG- Jugador 1: " << dadosJugador1 << " dados, " << puntajeJugador1 << " pts" << endl;
+        cout << "DEBUG- Jugador 2: " << dadosJugador2 << " dados, " << puntajeJugador2 << " pts" << endl;
+        cout << "----------------------------" << endl;
+
         contadorRonda++;
         if (contadorRonda %2 == 0)
         {
