@@ -279,19 +279,20 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 
         dadosJugador1 -= dadosUsados;
         dadosJugador2 += dadosUsados;
-
-        cout << jugador1 << " transfiere " << dadosUsados << " dados a " << jugador2 << endl;
-
-        cout << endl << "######Estado actual######" << endl;
-        cout << jugador1 << " " << dadosJugador1 << " dados restantes, " << puntajeJugador1 << " pts" << endl;
-        cout << jugador2 << " " << dadosJugador2 << " dados (recibio " << dadosUsados << ")" << endl;
-
         if (dadosJugador1 == 0)
         {
             sinDados=!sinDados;
-            cout << jugador1 << " se quedo sin dados, gana un bonus de 10000 puntos" << endl;
             puntajeJugador1 += 10000;
             // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
+        }
+        else
+        {
+            cout << jugador1 << " transfiere " << dadosUsados << " dados a " << jugador2 << endl;
+
+            cout << endl << "######Estado actual######" << endl;
+            cout << jugador1 << " " << dadosJugador1 << " dados restantes, " << puntajeJugador1 << " pts" << endl;
+            cout << jugador2 << " " << dadosJugador2 << " dados (recibio " << dadosUsados << ")" << endl;
+
         }
     }
     else
@@ -300,20 +301,21 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 
         dadosJugador2 -= dadosUsados;
         dadosJugador1 += dadosUsados;
+        if (dadosJugador2 == 0)
+        {
+            sinDados=!sinDados;
+            puntajeJugador2 += 10000;
+            // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
+        }
 
+        else{
         cout << jugador2 << " transfiere " << dadosUsados << " dados a " << jugador1 << endl;
 
         cout << endl << "######Estado actual######" << endl;
         cout << jugador2 << " " << dadosJugador2 << " dados restantes, " << puntajeJugador2 << " pts" << endl;
         cout << jugador1 << " " << dadosJugador1 << " dados (recibio " << dadosUsados << ")" << endl;
-
-        if (dadosJugador2 == 0)
-        {
-            sinDados=!sinDados;
-            cout << jugador2 << " se quedo sin dados, gana un bonus de 10000 puntos" << endl;
-            puntajeJugador2 += 10000;
-            // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
         }
+
     }
 }
 

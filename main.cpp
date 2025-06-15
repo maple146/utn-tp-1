@@ -31,17 +31,27 @@ int main()
         {
             numeroDeRonda++;
         }
-        turno=!turno;
-        cout << sinDados;
+
         if (sinDados == true)
         {
+            if (turno==true){
+                cout << jugador1 << " se quedo sin dados" << endl;
+                cout << jugador1 << " gano el juego." << endl;
+            }
+            else {
+                 cout << jugador2 << " se quedo sin dados" << endl;
+                cout << jugador2 << " gano el juego." << endl;
+            }
+            system("pause");
             break;
         }
-        jugadorGanador(turno,jugador1,jugador2,puntajeJugador1,puntajeJugador2,ganador,puntajeGanador);
-        ordenarEstadistica(ganador,puntajeGanador,jugadorEstadistica,puntajeEstadistica);
+        turno=!turno;
+
         system("pause");
 
     }
+            jugadorGanador(turno,jugador1,jugador2,puntajeJugador1,puntajeJugador2,ganador,puntajeGanador);
+        ordenarEstadistica(ganador,puntajeGanador,jugadorEstadistica,puntajeEstadistica);
     }
     return 0;
 
