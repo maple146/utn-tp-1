@@ -93,7 +93,12 @@ void mostrarEstadisticas(int puntajeEstadistica[],string jugadorEstadistica[])
 void mostrarCreditos()
 {
     system("cls");
-    cout << "Seleccionado creditos" << endl;
+    cout << "============================================================" << endl;
+    cout << "                       Enfrendados" << endl;
+    cout << "============================================================" << endl;
+    cout << "PARTICIPANTES EN LA CREACION DE ENFRENDADOS " << endl << endl;
+    cout << "Luciano Alcaraz - Legajo: 23944" << endl;
+    cout << "Tomas Zoria - Legajo: 29944" << endl << endl;
     cout << "Presione cualquier tecla para volver al menu..." << endl;
     system("pause>nul");
 }
@@ -138,23 +143,44 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
     if (turno == true)
     {
         cout << jugador1;
-        cout << "\t\t\t\t\t Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
+        cout << " \t\t\t\t\t Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
         cout << "Puntos actuales: " << puntajeJugador1;
-        cout << "\t\t\t\t\t Puntaje " << jugador2 << ": " << puntajeJugador2 << " - " << " dados en stock: " << dadosJugador2;
+        cout << " \t\t\t\t\t Puntaje " << jugador2 << ": " << puntajeJugador2 << " - " << " dados en stock: " << dadosJugador2;
     }
     else
     {
         cout << jugador2;
-        cout << "\t\t\t\t\t Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
+        cout << " \t\t\t\t\t Dados objetivo (d12):" << dadosObjetivo[0] << " + " << dadosObjetivo[1] << " = " << resultadoObjetivo << endl;
         cout << "Puntos actuales: " << puntajeJugador2;
-        cout << "\t\t\t\t\t Puntaje " << jugador1 << ": " << puntajeJugador1 << " - " << " dados en stock: " << dadosJugador1;
+        cout << " \t\t\t\t\t Puntaje " << jugador1 << ": " << puntajeJugador1 << " - " << " dados en stock: " << dadosJugador1;
     }
     cout << endl << endl;
-    cout << "Stock actual: ";
     if (turno==true)
 
     {
-        cout << dadosJugador1 << ": [";
+        cout << "Numero de dados" << ": \t {";
+        for (x=0; x<dadosJugador1; x++)
+        {
+            cout << x+1;
+            if (x < dadosJugador1-1)
+            {
+                cout << ",";
+            }
+        }
+        cout << "}" << endl;
+        cout << "\t\t" << "  \t  ";
+        for (x=0; x<dadosJugador1; x++)
+        {
+            cout << "|";
+            if (x < dadosJugador1-1)
+            {
+                cout << " ";
+            }
+        }
+        cout << endl;
+
+        cout << "Stock actual ";
+        cout << dadosJugador1 << ": \t [";
         for (x=0; x<dadosJugador1; x++)
         {
             dadosStock[x] = tirarDado(6);
@@ -165,10 +191,33 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
                 cout << ",";
             }
         }
+        cout << "]" << endl;
     }
     else
     {
-        cout << dadosJugador2 << ": [";
+        cout << "Numero de dados" << ": \t {";
+        for (x=0; x<dadosJugador2; x++)
+        {
+            cout << x+1;
+            if (x < dadosJugador2-1)
+            {
+                cout << ",";
+            }
+        }
+        cout << "}" << endl;
+        cout << "\t\t" << "  \t  ";
+        for (x=0; x<dadosJugador2; x++)
+        {
+            cout << "|";
+            if (x < dadosJugador2-1)
+            {
+                cout << " ";
+            }
+        }
+        cout << endl;
+
+        cout << "Stock actual ";
+        cout << dadosJugador2 << ": \t [";
         for (x=0; x<dadosJugador2; x++)
         {
             dadosStock[x] = tirarDado(6);
@@ -179,8 +228,9 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
                 cout << ",";
             }
         }
+        cout << "]" << endl;
     }
-    cout << "]" << endl;
+
 
 
     if(sumaStock<resultadoObjetivo)
@@ -195,29 +245,31 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
         while(resultadoObjetivo > sumaStock)
         {
             cin >> seleccion;
-                if (seleccion==0){
-                    cout << "El jugador decidio pasar el turno" << endl;
-                    break;
-                }
-                else {
-            while (dadosStock[seleccion-1]==0)
+            if (seleccion==0)
             {
-                cout << "Dado incorrecto, por favor seleccionar otro: ";
-                cin >> seleccion;
+                cout << "El jugador decidio pasar el turno" << endl;
+                break;
             }
-            dadosStockElegidos[contadorStock] = dadosStock[seleccion-1];
-            dadosStock[seleccion-1] = 0;
+            else
+            {
+                while (dadosStock[seleccion-1]==0)
+                {
+                    cout << "Dado incorrecto, por favor seleccionar otro: ";
+                    cin >> seleccion;
+                }
+                dadosStockElegidos[contadorStock] = dadosStock[seleccion-1];
+                dadosStock[seleccion-1] = 0;
 
-            sumaStock += dadosStockElegidos[contadorStock];
-            contadorStock++;
-        }
+                sumaStock += dadosStockElegidos[contadorStock];
+                contadorStock++;
+            }
         }
 
         system("cls");
 
-            cout << "============================================================" << endl;
-    cout << "                       Enfrendados " << endl;
-    cout << "============================================================" << endl << endl;
+        cout << "============================================================" << endl;
+        cout << "                       Enfrendados " << endl;
+        cout << "============================================================" << endl << endl;
 
         // Suma los dados elegidos y los imprime
         for (x=0; x<contadorStock; x++)
