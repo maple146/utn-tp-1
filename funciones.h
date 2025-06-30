@@ -13,7 +13,7 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
 bool quienEmpieza(bool turno);
 void tiradaExitosa(bool &sinDados,bool turno, int sumaStock, int dadosUsados, int &puntajeJugador1, int &puntajeJugador2, int &dadosJugador1, int &dadosJugador2, string jugador1, string jugador2);
 void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugador2,int seleccion,int sumaStock, bool turno, int &dadosJugador1, int &dadosJugador2, string jugador1, string jugador2);
-void jugadorGanador(bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador);
+void jugadorGanador(bool sinDados,bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador);
 void ordenarEstadistica(string ganador,int puntajeGanador,string jugadorEstadistica[],int puntajeEstadistica[]);
 
 #endif // FUNCIONES_H_INCLUDED
