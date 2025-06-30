@@ -279,6 +279,10 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
         cout << "                       Enfrendados " << endl;
         cout << "============================================================" << endl << endl;
 
+        cout << "Dados objetivo: " << resultadoObjetivo << endl;
+
+        cout << "Suma de dados elegidos: ";
+
         // Suma los dados elegidos y los imprime
         for (x=0; x<contadorStock; x++)
         {
