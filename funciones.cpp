@@ -328,8 +328,9 @@ bool quienEmpieza(bool turno)
 void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, int &puntajeJugador1, int &puntajeJugador2, int &dadosJugador1, int &dadosJugador2, string jugador1, string jugador2)
 {
     int puntosGanados = sumaStock * dadosUsados;
-    if(sumaStock!=0){
-    cout << " = " << sumaStock << endl;
+    if(sumaStock!=0)
+    {
+        cout << " = " << sumaStock << endl;
     }
     cout << endl << "Puntos ganados: " << dadosUsados << " x " << sumaStock << " = " << puntosGanados << endl;
     cout << endl;
@@ -388,9 +389,10 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugador2,int seleccion,int sumaStock, bool turno, int &dadosJugador1, int &dadosJugador2, string jugador1, string jugador2)
 {
     // TODO: Cambiar tipo de la variable turno?
-    if(sumaStock!=0){
-    cout << " = " << sumaStock << endl;
-    cout << " resultado objetivo: " << resultadoObjetivo << endl << endl;
+    if(sumaStock!=0)
+    {
+        cout << " = " << sumaStock << endl;
+        cout << " resultado objetivo: " << resultadoObjetivo << endl << endl;
     }
     if (turno && dadosJugador2 > 1)
     {
@@ -398,11 +400,13 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
         dadosJugador2--;
         // TODO: Checkear porque no corta la linea antes
 
-        if(seleccion==0){
+        if(seleccion==0)
+        {
             cout << jugador1 << " decidio pasar el turno, recibe un dado de " << jugador2 << endl;
         }
-        else{
-        cout << jugador1 << " no tuvo buena tirada, recibe un dado de " << jugador2 << endl;
+        else
+        {
+            cout << jugador1 << " no tuvo buena tirada, recibe un dado de " << jugador2 << endl;
         }
         cout << endl << "============================================================" << endl << endl;
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
@@ -415,11 +419,13 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
         dadosJugador2++;
         dadosJugador1--;
         // TODO: Checkear porque no corta la linea antes
-        if(seleccion==0){
+        if(seleccion==0)
+        {
             cout << jugador2 << " decidio pasar el turno" << endl;
         }
-        else{
-        cout << jugador2 << " no tuvo buena tirada, recibe un dado de " << jugador1 << endl;
+        else
+        {
+            cout << jugador2 << " no tuvo buena tirada, recibe un dado de " << jugador1 << endl;
         }
 
         cout << endl << "============================================================" << endl << endl;
@@ -433,7 +439,7 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
         // TODO: Revisar que deberia pasar aca..
     }
 }
-void jugadorGanador(bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador)
+void jugadorGanador(bool sinDados,bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador)
 {
     if (puntajeJugador1>puntajeJugador2)
     {
@@ -446,12 +452,18 @@ void jugadorGanador(bool turno,string jugador1,string jugador2,int puntajeJugado
         puntajeGanador=puntajeJugador2;
     }
     system("cls");
-        cout << "============================================================" << endl;
+    cout << "============================================================" << endl;
     cout << "                       Enfrendados " << endl;
     cout << "============================================================" << endl << endl;
 
-    cout << "El ganador fue " << ganador << " con un total de " << puntajeGanador << " ¡felicitaciones!";
-
+    if (sinDados)
+    {
+        cout << ganador << " se quedo sin dados, "<< ganador << " gano el juego con un puntaje de: " << puntajeGanador << " ¡felicitaciones!" << endl;
+    }
+    else
+    {
+        cout << "El ganador fue " << ganador << " con un total de " << puntajeGanador << " ¡felicitaciones!" << endl;
+    }
 
 }
 

@@ -57,16 +57,16 @@ int main()
         {
             system("cls");
             cout << "============================================================" << endl;
-    cout << "                       Enfrendados " << endl;
-    cout << "============================================================" << endl << endl;
+            cout << "                       Enfrendados " << endl;
+            cout << "============================================================" << endl << endl;
             cout << "Juego empatado, no hay ganador" << endl;
         }
         else
         {
-            jugadorGanador(turno,jugador1,jugador2,puntajeJugador1,puntajeJugador2,ganador,puntajeGanador);
+            jugadorGanador(sinDados,turno,jugador1,jugador2,puntajeJugador1,puntajeJugador2,ganador,puntajeGanador);
             ordenarEstadistica(ganador,puntajeGanador,jugadorEstadistica,puntajeEstadistica);
         }
-                    system("pause");
+        system("pause");
     }
     return 0;
 
