@@ -113,14 +113,22 @@ void seleccionarNombres(string &jugador1, string &jugador2)
 
     cin.ignore();
 
+    do {
+        cout << "Ingresar nombre de Jugador 1: ";
+        getline(cin, jugador1);
+        if (jugador1.empty()) {
+            cout << "Nombre invalido. Ingrese un nombre valido para el Jugador 1." << endl;
+        }
+    } while (jugador1.empty());
 
-    cout << "Ingresar nombre de Jugador 1: ";
+    do {
+        cout << "Ingresar nombre de Jugador 2: ";
+        getline(cin, jugador2);
+         if (jugador2.empty()) {
+            cout << "Nombre invalido. Ingrese un nombre valido para el Jugador 2." << endl;
+        }
+    } while (jugador2.empty());
 
-    getline(cin, jugador1);
-
-    cout << "Ingresar nombre de Jugador 2: ";
-
-    getline(cin, jugador2);
 }
 
 void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDeRonda, int &dadosJugador1, int &dadosJugador2, int &puntajeJugador1, int &puntajeJugador2,bool turno)
@@ -270,6 +278,10 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
         cout << "============================================================" << endl;
         cout << "                       Enfrendados " << endl;
         cout << "============================================================" << endl << endl;
+
+        cout << "Dados objetivo: " << resultadoObjetivo << endl;
+
+        cout << "Suma de dados elegidos: ";
 
         // Suma los dados elegidos y los imprime
         for (x=0; x<contadorStock; x++)
@@ -450,7 +462,7 @@ void jugadorGanador(bool turno,string jugador1,string jugador2,int puntajeJugado
     cout << "                       Enfrendados " << endl;
     cout << "============================================================" << endl << endl;
 
-    cout << "El ganador fue " << ganador << " con un total de " << puntajeGanador << " ¡felicitaciones!";
+    cout << "El ganador fue " << ganador << " con un total de " << puntajeGanador << " ï¿½felicitaciones!";
 
 
 }

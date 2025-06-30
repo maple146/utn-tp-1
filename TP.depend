@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1749941688 source:c:\dev\utn\tp\main.cpp
+1751320078 source:c:\dev\utn\tp\main.cpp
 	<iostream>
 	"funciones.h"
 	<ctime>
 
-1749942027 source:c:\dev\utn\tp\funciones.cpp
+1751323252 source:c:\dev\utn\tp\funciones.cpp
 	<iostream>
 	"funciones.h"
 
-1749937749 c:\dev\utn\tp\funciones.h
+1751320078 c:\dev\utn\tp\funciones.h
 
 1750089390 source:c:\users\tomas\desktop\cursada\tp\utn-tp-1\main.cpp
 	<iostream>
