@@ -97,6 +97,7 @@ void mostrarCreditos()
     cout << "                       Enfrendados" << endl;
     cout << "============================================================" << endl;
     cout << "PARTICIPANTES EN LA CREACION DE ENFRENDADOS " << endl << endl;
+    cout << "Grupo 22" << endl;
     cout << "Luciano Alcaraz - Legajo: 23944" << endl;
     cout << "Tomas Zoria - Legajo: 29944" << endl << endl;
     cout << "Presione cualquier tecla para volver al menu..." << endl;
@@ -113,14 +114,28 @@ void seleccionarNombres(string &jugador1, string &jugador2)
 
     cin.ignore();
 
+    do
+    {
+        cout << "Ingresar nombre de Jugador 1: ";
+        getline(cin, jugador1);
+        if (jugador1.empty())
+        {
+            cout << "Nombre invalido. Ingrese un nombre valido para el Jugador 1." << endl;
+        }
+    }
+    while (jugador1.empty());
 
-    cout << "Ingresar nombre de Jugador 1: ";
+    do
+    {
+        cout << "Ingresar nombre de Jugador 2: ";
+        getline(cin, jugador2);
+        if (jugador2.empty())
+        {
+            cout << "Nombre invalido. Ingrese un nombre valido para el Jugador 2." << endl;
+        }
+    }
+    while (jugador2.empty());
 
-    getline(cin, jugador1);
-
-    cout << "Ingresar nombre de Jugador 2: ";
-
-    getline(cin, jugador2);
 }
 
 void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDeRonda, int &dadosJugador1, int &dadosJugador2, int &puntajeJugador1, int &puntajeJugador2,bool turno)
@@ -270,6 +285,9 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
         cout << "============================================================" << endl;
         cout << "                       Enfrendados " << endl;
         cout << "============================================================" << endl << endl;
+
+        cout << "Dados objetivo: " << resultadoObjetivo << endl;
+        cout << "Suma de dados elegidos: ";
 
         // Suma los dados elegidos y los imprime
         for (x=0; x<contadorStock; x++)
