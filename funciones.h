@@ -16,4 +16,4 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
 void jugadorGanador(bool sinDados,bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador);
 void ordenarEstadistica(string ganador,int puntajeGanador,string jugadorEstadistica[],int puntajeEstadistica[]);
 
-#endif // FUNCIONES_H_INCLUDED
+#endif

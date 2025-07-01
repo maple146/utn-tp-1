@@ -9,6 +9,9 @@ int main()
     setlocale(LC_ALL, "spanish");
     int puntajeGanador,puntajeEstadistica[5]= {},option;
     string jugadorEstadistica[5],jugador1="Jugador 1",jugador2="Jugador 2",ganador;
+    // Checkea que jugador esta jugando en el momento
+    // turno=true Jugador 1
+    // turno=false Jugador 2
     bool turno;
 
     while(option!=0)

@@ -327,10 +327,9 @@ bool quienEmpieza(bool turno)
     {
         j1 = tirarDado(6);
         j2 = tirarDado(6);
-        // cout << j1 << "   " << j2 << endl;
     }
     while(j1 == j2);
-    //system("pause");
+    
     if (j1 > j2)
     {
         cout << "Jugador 1 empieza" << endl;
@@ -352,7 +351,8 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
     }
     cout << endl << "Puntos ganados: " << dadosUsados << " x " << sumaStock << " = " << puntosGanados << endl;
     cout << endl;
-    // turno true = jugador1, turno false = false
+
+
     if (turno == true)
     {
         puntajeJugador1 += puntosGanados;
@@ -363,7 +363,6 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
         {
             sinDados=!sinDados;
             puntajeJugador1 += 10000;
-            // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
         }
         else
         {
@@ -387,7 +386,6 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
         {
             sinDados=!sinDados;
             puntajeJugador2 += 10000;
-            // TODO: Aca deberia terminar el juego, depende de la logica de "Condicion de victoria"
         }
 
         else
@@ -406,7 +404,6 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 
 void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugador2,int seleccion,int sumaStock, bool turno, int &dadosJugador1, int &dadosJugador2, string jugador1, string jugador2)
 {
-    // TODO: Cambiar tipo de la variable turno?
     if(sumaStock!=0)
     {
         cout << " = " << sumaStock << endl;
@@ -416,7 +413,6 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
     {
         dadosJugador1++;
         dadosJugador2--;
-        // TODO: Checkear porque no corta la linea antes
 
         if(seleccion==0)
         {
@@ -436,7 +432,7 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
     {
         dadosJugador2++;
         dadosJugador1--;
-        // TODO: Checkear porque no corta la linea antes
+
         if(seleccion==0)
         {
             cout << jugador2 << " decidio pasar el turno" << endl;
@@ -452,11 +448,8 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
         cout << "Puntaje actual de " << jugador1 << ": " << puntajeJugador1 << endl << endl;
     }
-    else
-    {
-        // TODO: Revisar que deberia pasar aca..
-    }
 }
+
 void jugadorGanador(bool sinDados,bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador)
 {
     if (puntajeJugador1>puntajeJugador2)
