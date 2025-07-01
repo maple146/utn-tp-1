@@ -18,7 +18,7 @@ int main()
     {
         menu(puntajeEstadistica,jugadorEstadistica);
         seleccionarNombres(jugador1,jugador2);
-        turno = quienEmpieza(turno);
+        turno = quienEmpieza();
 
         int numeroDeRonda = 1, dadosJugador1=6, dadosJugador2=6, puntajeJugador1 = 0, puntajeJugador2 = 0,contadorRonda=0;
         bool sinDados=false;

@@ -48,7 +48,15 @@ void menu(int puntajeEstadistica[],string jugadorEstadistica[])
         case 0:
             cout << "Desea salir del juego? (S/N)" << endl;
             cin >> confirm;
+
             confirm = toupper(confirm);
+
+            while (confirm!='N' && confirm!= 'S'){
+                cout << "Por favor seleccionar una opcion valida " << endl;
+                cin >> confirm;
+                confirm = toupper(confirm);
+            }
+
             if (confirm == 'S')
             {
                 exit(0);
@@ -65,14 +73,6 @@ void menu(int puntajeEstadistica[],string jugadorEstadistica[])
 
     }
     while (option != 0 || confirm=='N');
-}
-
-void jugar()
-{
-    system("cls");
-    cout << "Seleccionado jugar" << endl;
-    cout << "Presione cualquier tecla para volver al menu..." << endl;
-    system("pause>nul");
 }
 
 void mostrarEstadisticas(int puntajeEstadistica[],string jugadorEstadistica[])
@@ -169,9 +169,10 @@ void interfazJuego(bool &sinDados,string jugador1, string jugador2, int numeroDe
         cout << "Puntos actuales: " << puntajeJugador2;
         cout << " \t\t\t\t\t Puntaje " << jugador1 << ": " << puntajeJugador1 << " - " << " dados en stock: " << dadosJugador1;
     }
-    cout << endl << endl;
-    if (turno==true)
 
+    cout << endl << endl;
+
+    if (turno==true)
     {
         cout << "Numero de dados" << ": \t {";
         for (x=0; x<dadosJugador1; x++)
@@ -320,7 +321,7 @@ int tirarDado(int caras)
     return rand() % caras + 1;
 }
 
-bool quienEmpieza(bool turno)
+bool quienEmpieza()
 {
     int j1,j2;
     do
@@ -329,15 +330,15 @@ bool quienEmpieza(bool turno)
         j2 = tirarDado(6);
     }
     while(j1 == j2);
-    
+
     if (j1 > j2)
     {
-        cout << "Jugador 1 empieza" << endl;
+        //cout << "Jugador 1 empieza" << endl;
         return true;
     }
     else
     {
-        cout << "Jugador 2 empieza" << endl;
+        //cout << "Jugador 2 empieza" << endl;
         return false;
     }
 }
@@ -345,10 +346,9 @@ bool quienEmpieza(bool turno)
 void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, int &puntajeJugador1, int &puntajeJugador2, int &dadosJugador1, int &dadosJugador2, string jugador1, string jugador2)
 {
     int puntosGanados = sumaStock * dadosUsados;
-    if(sumaStock!=0)
-    {
+
         cout << " = " << sumaStock << endl;
-    }
+
     cout << endl << "Puntos ganados: " << dadosUsados << " x " << sumaStock << " = " << puntosGanados << endl;
     cout << endl;
 
@@ -404,11 +404,9 @@ void tiradaExitosa(bool &sinDados, bool turno, int sumaStock, int dadosUsados, i
 
 void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugador2,int seleccion,int sumaStock, bool turno, int &dadosJugador1, int &dadosJugador2, string jugador1, string jugador2)
 {
-    if(sumaStock!=0)
-    {
+
         cout << " = " << sumaStock << endl;
-        cout << " resultado objetivo: " << resultadoObjetivo << endl << endl;
-    }
+        cout << "resultado objetivo: " << resultadoObjetivo << endl << endl;
     if (turno && dadosJugador2 > 1)
     {
         dadosJugador1++;
@@ -448,6 +446,7 @@ void tiradaNoExitosa(int resultadoObjetivo,int puntajeJugador1, int puntajeJugad
         cout << "Dados de " << jugador1 << ": " << dadosJugador1 << endl;
         cout << "Puntaje actual de " << jugador1 << ": " << puntajeJugador1 << endl << endl;
     }
+
 }
 
 void jugadorGanador(bool sinDados,bool turno,string jugador1,string jugador2,int puntajeJugador1,int puntajeJugador2,string &ganador,int &puntajeGanador)
